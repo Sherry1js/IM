@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_add_contact"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_top_bar"
+        android:background="@color/top_bar_normal_bg"
+        android:gravity="center_vertical">
+
+        <include
+            android:id="@+id/bt_back"
+            layout="@layout/button_back" />
+
+        <TextView
+            android:id="@+id/add_list_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:text="添加好友"/>
+
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="54dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ease_common_tab_bg"
+            android:text="搜索"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_shape"
+        android:hint="UserName"
+        android:singleLine="true"
+        android:textColorHint="#b3b3b3"
+        android:textSize="18sp" />
+    
+    <RelativeLayout
+        android:id="@+id/rl_search_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/add_name"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/em_default_avatar"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/tv_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="名称"
+            android:layout_toRightOf="@id/add_name"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"/>
+        <Button
+            android:id="@+id/bt_add_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

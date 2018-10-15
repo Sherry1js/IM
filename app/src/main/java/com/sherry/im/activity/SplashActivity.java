@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.hyphenate.chat.EMClient;
 import com.sherry.im.Model;
 import com.sherry.im.R;
+import com.sherry.im.bean.UserInfo;
 
 import static android.os.Message.obtain;
 
@@ -40,11 +41,22 @@ public class SplashActivity extends Activity{
             public void run(){
                 //判断当前账号是否已登录过
                 if(EMClient.getInstance().isLoggedInBefore()){
-                    //已登录，跳转到主页面
-                    Intent intent = new Intent(SplashActivity.this,MainActivity.class);
-                    startActivity(intent);
-                }
-                else {
+                    //获取当前登录的用户信息
+                    UserInfo account = Model.getInstance().getUserAccountDao().getAccountByHxId
+                            (EMClient.getInstance().getCurrentUser());
+                    if(account == null) {
+                        //未登录，跳转到登录页面
+                        Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
+                        startActivity(intent);
+                    } else {
+                        //登录成功后执行模型层的登录后处理方法
+                        Model.getInstance().loginSuccess(account);
+
+                        //已登录，跳转到主页面
+                        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                        startActivity(intent);
+                    }
+                } else {
                     //未登录，跳转到登录页面
                     Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                     startActivity(intent);

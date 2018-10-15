@@ -86,9 +86,9 @@ public class LoginActivity extends AppCompatActivity{
                     @Override
                     public void onSuccess(){
                         //对模型层数据的处理
-                        Model.getInstance().loginSuccess();
+                        Model.getInstance().loginSuccess(new UserInfo(loginName));
 
-                        //保存数据到数据库中（有BUG，还没修改完，无法保存数据）
+                        //保存数据到数据库中
                         Model.getInstance().getUserAccountDao().addAccount(new UserInfo(loginName));
 
                         runOnUiThread(new Runnable(){

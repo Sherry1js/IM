@@ -2,8 +2,10 @@ package com.sherry.im;
 
 import android.content.Context;
 
+import com.sherry.im.bean.UserInfo;
 import com.sherry.im.dao.UserAccountDao;
 import com.sherry.im.dao.UserAccountTable;
+import com.sherry.im.db.DBManager;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -19,6 +21,7 @@ public class Model{
 
     private Context mContext;
     private ExecutorService executorService = Executors.newCachedThreadPool();//线程池
+    private DBManager dbManager;
 
     //创建构造
     private static Model model = new Model();
@@ -39,6 +42,8 @@ public class Model{
         mContext = context;
 
         userAccountDao = new UserAccountDao(mContext);
+
+        EventListener eventListener = new EventListener(mContext);
     }
 
     //获取全局线程池对象
@@ -47,7 +52,22 @@ public class Model{
     }
 
     //登录成功的处理
-    public void loginSuccess(){
+    public void loginSuccess(UserInfo account){
+        if(account == null) {
+            return;
+        }
+
+        //若该管理表已存在，则先执行关闭操作
+        if(dbManager != null) {
+            dbManager.close();
+        }
+
+        dbManager = new DBManager(mContext, account.getName());
+    }
+
+    //获取管理者的公共方法
+    public DBManager getDBManager(){
+        return dbManager;
     }
 
     //获取用户账号数据库的操作类对象

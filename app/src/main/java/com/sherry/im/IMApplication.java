@@ -1,6 +1,7 @@
 package com.sherry.im;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.controller.EaseUI;
@@ -12,6 +13,9 @@ import com.hyphenate.easeui.controller.EaseUI;
  */
 
 public class IMApplication extends Application{
+
+    private static Context mContext;
+
     @Override
     public void onCreate(){
         super.onCreate();
@@ -24,5 +28,13 @@ public class IMApplication extends Application{
 
         //初始化数据模型层类
         Model.getInstance().init(this);
+
+        //初始化全局上下文对象
+        mContext = this;
+    }
+
+    //获取全局上下文对象
+    public static Context getGlobalApplication(){
+        return mContext;
     }
 }
