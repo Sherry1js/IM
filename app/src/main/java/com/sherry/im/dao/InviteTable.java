@@ -19,7 +19,7 @@ public class InviteTable {
     public static final String COL_REASON = "reason"; //邀请的原因
     public static final String COL_STATUS = "status"; //邀请的状态
 
-    public static final String CREATE_TAB = "create table"
+    public static final String CREATE_TAB = "create table "
             + TAB_NAME + " ("
             + COL_USER_HXID + " text primary key,"
             + COL_USER_NAME + " text,"

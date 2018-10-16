@@ -106,11 +106,11 @@ public class LoginActivity extends AppCompatActivity{
                     }
 
                     @Override
-                    public void onError(int i, String s){
+                    public void onError(int i, final String s){
                         runOnUiThread(new Runnable(){
                             @Override
                             public void run(){
-                                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "登录失败"+s, Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -152,12 +152,12 @@ public class LoginActivity extends AppCompatActivity{
                             Toast.makeText(LoginActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                         }
                     });
-                } catch(HyphenateException e) {
+                } catch(final HyphenateException e) {
                     e.printStackTrace();
                     runOnUiThread(new Runnable(){
                         @Override
                         public void run(){
-                            Toast.makeText(LoginActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "注册失败" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

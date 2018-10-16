@@ -42,7 +42,7 @@
                 android:drawableTop="@drawable/em_contact_list_normal"
                 android:paddingBottom="2dp"
                 android:paddingTop="7dp"
-                android:text="通讯录"
+                android:text="联系人"
                 android:textColor="@color/botton_text_color_selector"
                 android:textSize="12sp"
                 android:button="@null"
